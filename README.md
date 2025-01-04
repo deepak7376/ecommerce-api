@@ -5,28 +5,20 @@ Run the following commands in the root directory of your project:
 
 1. **Initialize migrations folder**:
    ```bash
-   flask db init
+   docker exec -it flask_app flask db init
    ```
 
 2. **Generate migration scripts**:
    ```bash
-   flask db migrate -m "Initial migration"
+   docker exec -it flask_app flask db migrate -m "Initial migration"
+
    ```
 
 3. **Apply migrations to the database**:
    ```bash
-   flask db upgrade
+   docker exec -it flask_app flask db upgrade
    ```
-
----
-
-### 2. **Run the API**
-Run the Flask application:
-```bash
-python run.py
-```
-
-The API should now be accessible at `http://127.0.0.1:5000`.
+docker exec -it postgres_db psql -U postgres -d mydatabase
 
 ---
 
@@ -79,3 +71,7 @@ docker pull postgres
 docker run --name my-postgres -e POSTGRES_USER=myuser -e POSTGRES_PASSWORD=mypassword -e POSTGRES_DB=mydatabase -p 5432:5432 -d postgres
 docker exec -it my-postgres psql -U myuser -d mydatabase
 docker run --name my-postgres -e POSTGRES_USER=myuser -e POSTGRES_PASSWORD=mypassword -e POSTGRES_DB=mydatabase -p 5432:5432 -v my_pgdata:/var/lib/postgresql/data -d postgres
+
+/d
+
+/dt

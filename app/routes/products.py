@@ -6,6 +6,11 @@ from app import db
 
 products_bp = Blueprint('products', __name__, url_prefix='/products')
 
+# Home endpoint
+@products_bp.route('/test', methods=['GET'])
+def home():
+    return jsonify({"message": "Welcome to the Flask API!"})
+
 @products_bp.route('', methods=['GET'])
 def get_products():
     products = Product.query.all()
@@ -21,6 +26,7 @@ def get_products():
 @products_bp.route('', methods=['POST'])
 def add_product():
     data = request.get_json()
+    print(data)
     try:
         new_product = Product(
             name=data['name'],

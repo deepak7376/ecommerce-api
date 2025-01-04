@@ -8,11 +8,11 @@ db = SQLAlchemy()
 migrate = Migrate()
 
 
-def create_app(config_class='config.DevelopmentConfig'):
+def create_app(config_class='config.Config'):
     """Application Factory."""
     app = Flask(__name__)
     app.config.from_object(config_class)
-    # print(app.config)
+    print(app.config)
     # Initialize extensions
     db.init_app(app)
     migrate.init_app(app, db)
