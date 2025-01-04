@@ -8,8 +8,9 @@ class Product(db.Model):
     price = db.Column(db.Float, nullable=False)
     stock = db.Column(db.Integer, nullable=False)
 
-    def __init__(self, name, price, stock):
+    def __init__(self, name, description, price, stock):
         self.name = name
+        self.description = description
         self.price = price
         self.stock = stock
 
@@ -18,6 +19,7 @@ class Product(db.Model):
         return {
             'id': self.id,
             'name': self.name,
+            'description': self.description,
             'price': self.price,
             'stock': self.stock
         }

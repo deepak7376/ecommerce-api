@@ -1,15 +1,4 @@
-Here’s how you can run database migrations and test the API:
-
----
-
 ### 1. **Run Database Migrations**
-Flask-Migrate helps manage migrations.
-
-#### Install Dependencies
-Ensure you have Flask-Migrate installed:
-```bash
-pip install flask-migrate
-```
 
 #### Initialize Flask-Migrate
 Run the following commands in the root directory of your project:
@@ -28,8 +17,6 @@ Run the following commands in the root directory of your project:
    ```bash
    flask db upgrade
    ```
-
-This creates the database and applies your models to it.
 
 ---
 
@@ -55,10 +42,10 @@ You can use tools like **Postman**, **cURL**, or **pytest** to test your API end
 2. **Test POST /products**:
    ```bash
    curl -X POST http://127.0.0.1:5000/products -H "Content-Type: application/json" -d '{
-       "name": "Laptop",
-       "description": "High-performance laptop",
-       "price": 999.99,
-       "stock": 10
+       "name": "Table",
+       "description": "High-performance",
+       "price": 200.99,
+       "stock": 30
    }'
    ```
 
@@ -67,6 +54,7 @@ You can use tools like **Postman**, **cURL**, or **pytest** to test your API end
    curl -X POST http://127.0.0.1:5000/orders -H "Content-Type: application/json" -d '{
        "products": [
            {"id": 1, "quantity": 2}
+
        ]
    }'
    ```
@@ -74,7 +62,6 @@ You can use tools like **Postman**, **cURL**, or **pytest** to test your API end
 ---
 
 ### 4. **Run Automated Tests**
-If you’ve written test cases in `app/tests/`, use `pytest` to run them:
 
 #### Install `pytest`:
 ```bash
@@ -86,8 +73,9 @@ pip install pytest
 pytest app/tests/
 ```
 
-This will execute all the test cases and provide a summary of results.
+### 5. **Database setup**
 
----
-
-Let me know if you need any additional help or examples!
+docker pull postgres
+docker run --name my-postgres -e POSTGRES_USER=myuser -e POSTGRES_PASSWORD=mypassword -e POSTGRES_DB=mydatabase -p 5432:5432 -d postgres
+docker exec -it my-postgres psql -U myuser -d mydatabase
+docker run --name my-postgres -e POSTGRES_USER=myuser -e POSTGRES_PASSWORD=mypassword -e POSTGRES_DB=mydatabase -p 5432:5432 -v my_pgdata:/var/lib/postgresql/data -d postgres

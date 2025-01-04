@@ -1,5 +1,6 @@
 # app/services/stock_service.py
-from app.models import db, Product
+from app.models import Product
+from app import db
 
 def validate_and_deduct_stock(products):
     total_price = 0

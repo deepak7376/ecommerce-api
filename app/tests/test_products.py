@@ -1,11 +1,12 @@
 import pytest
 from app import create_app, db
 from app.models import Product
+import config
+
 
 @pytest.fixture
 def app():
-    app = create_app()
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///:memory:'
+    app = create_app(config_class=config.TestConfig)
     db.create_all()
     yield app
     db.drop_all()
