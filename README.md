@@ -1,6 +1,11 @@
-### 1. **Run Database Migrations**
+### 1. Run Development Environment
 
-#### Initialize Flask-Migrate
+```bash
+   docker-compose up --build
+
+   ```
+
+### 2. Initialize Flask-Migrate
 Run the following commands in the root directory of your project:
 
 1. **Initialize migrations folder**:
@@ -22,7 +27,7 @@ docker exec -it postgres_db psql -U postgres -d mydatabase
 
 ---
 
-### 3. **Test the API**
+### 3. Test the API
 You can use tools like **Postman**, **cURL**, or **pytest** to test your API endpoints.
 
 #### Using cURL
@@ -53,7 +58,7 @@ You can use tools like **Postman**, **cURL**, or **pytest** to test your API end
 
 ---
 
-### 4. **Run Automated Tests**
+### 4. Run Automated Tests
 
 #### Install `pytest`:
 ```bash
@@ -64,14 +69,3 @@ pip install pytest
 ```bash
 pytest app/tests/
 ```
-
-### 5. **Database setup**
-
-docker pull postgres
-docker run --name my-postgres -e POSTGRES_USER=myuser -e POSTGRES_PASSWORD=mypassword -e POSTGRES_DB=mydatabase -p 5432:5432 -d postgres
-docker exec -it my-postgres psql -U myuser -d mydatabase
-docker run --name my-postgres -e POSTGRES_USER=myuser -e POSTGRES_PASSWORD=mypassword -e POSTGRES_DB=mydatabase -p 5432:5432 -v my_pgdata:/var/lib/postgresql/data -d postgres
-
-/d
-
-/dt
